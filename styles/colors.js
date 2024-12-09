@@ -5,5 +5,5 @@ export const colors = {
   icon: '#64748b',       
   error: '#ef4444',      
   success: '#10b981',    
-  backgroundImage: 'u)' 
+   
 };

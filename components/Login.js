@@ -37,8 +37,9 @@ export default function Login({ navigation }) {
       />
       <Button title="Login" onPress={handleLogin} />
       <Text onPress={() => navigation.navigate('Signup')} style={styles.link}>
-        Don't have an account? Sign up
-      </Text>
+  Don't have an account? Sign up
+</Text>
+
     </View>
   );
 }

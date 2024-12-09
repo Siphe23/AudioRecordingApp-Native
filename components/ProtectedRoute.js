@@ -10,19 +10,12 @@ const ProtectedRoute = (Component) => {
 
     useEffect(() => {
       const checkAuth = async () => {
-        try {
-          const auth = await AsyncStorage.getItem('isAuthenticated');
-          console.log('Authentication Status:', auth);
-          setIsAuthenticated(auth === 'true');
-        } catch (error) {
-          console.error('Error checking authentication:', error);
-          setIsAuthenticated(false); // Fallback in case of error
-        }
+        const auth = await AsyncStorage.getItem('isAuthenticated');
+        setIsAuthenticated(auth === 'true');
       };
       checkAuth();
     }, []);
 
-    // Show a loading spinner while checking authentication
     if (isAuthenticated === null) {
       return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -31,7 +24,6 @@ const ProtectedRoute = (Component) => {
       );
     }
 
-    // Redirect to Login if not authenticated
     if (!isAuthenticated) {
       navigation.reset({
         index: 0,
@@ -40,7 +32,6 @@ const ProtectedRoute = (Component) => {
       return null;
     }
 
-    // Render the protected component
     return <Component {...props} />;
   };
 };
